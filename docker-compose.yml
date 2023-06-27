@@ -15,7 +15,7 @@ services:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost --silent"]
+      test: [ "CMD-SHELL", "mysqladmin ping -h localhost --silent" ]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -38,7 +38,7 @@ services:
     volumes:
       - ./:/app
       - ./wait-for-it.sh:/wait-for-it.sh
-    command: /wait-for-it.sh mysql:3306 -t 30 -- python -m uvicorn main:app --host 0.0.0.0 --port 8000
+    command: /wait-for-it.sh mysql:3306 -t 10 -- python -m uvicorn main:app --host 0.0.0.0 --port 8000
 
 volumes:
   mysql_data:

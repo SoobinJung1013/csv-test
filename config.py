@@ -2,6 +2,8 @@ from dotenv import load_dotenv
 
 import os
 
+load_dotenv()
+
 # MySQL Database Configuration
 DATABASE_HOST = os.getenv("MYSQL_HOST", "localhost")
 DATABASE_PORT = int(os.getenv("MYSQL_PORT", "3306"))
